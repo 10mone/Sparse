@@ -21,6 +21,11 @@ for i in t:
     noise = np.random.normal(loc=0, scale=0.5)
     y.append(2*i+noise)
 
+#used to dot the noise values
+yy = [None for _ in range(151)]
+for i in range(0,15):
+    yy[i*10] = y[i]
+
 y = np.array(y)
 
 phi15 = np.vander(t)
@@ -31,6 +36,7 @@ x = np.dot(np.dot(np.linalg.inv(np.dot(phi.T, phi)), phi.T), y.T)
 result, true_value = draw(x)
 
 ax = plt.subplot()
+plt.plot(yy, 'o', color='blue', label='noise data')
 plt.plot(result, color='blue', label='calculated value')
 plt.plot(true_value, color='red', linestyle='dashed', label='true value')
 plt.legend()
