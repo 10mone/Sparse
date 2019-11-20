@@ -13,7 +13,6 @@ def draw(x):
         tt += 0.1
     return result_value, true_value
 
-
 t = [i for i in range(0,11)]
 y = []
 true_value = []
@@ -31,8 +30,9 @@ x = np.dot(np.linalg.inv(phi), y.T)
 result,true_value = draw(x)
 
 ax = plt.subplot()
-plt.plot(result, color='blue')
-plt.plot(true_value, color='red', linestyle='dashed')
+plt.plot(result, color='blue', label='calculated value')
+plt.plot(true_value, color='red', linestyle='dashed', label='true value')
+plt.legend()
 
 #change the x-axis-label (not change the value itself) 
 ax.set_xticks(np.linspace(0, 100, 11))
