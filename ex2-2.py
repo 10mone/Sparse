@@ -45,4 +45,5 @@ ax.set_xticklabels(['0','5','10','15'])
 
 ax.set_xlim(0.0, 150.0)
 ax.set_ylim(0.0, 50.0)
+plt.title('Figure2-4 14dim')
 plt.show() 
