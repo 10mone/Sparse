@@ -1,8 +1,9 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+from drawing import drawing
 
-def draw(x):
+def calc(x):
     tt = 0
     result_value = []
     true_value = []
@@ -21,7 +22,7 @@ true_value = []
 for i in t:
     noise = np.random.normal(loc=0, scale=0.2)
     y.append(math.sin(i)+noise)
-    
+
 #used to dot the noise values
 yy = [None for _ in range(101)]
 for i in range(0,11):
@@ -33,19 +34,7 @@ y = np.array(y)
 phi = np.vander(t)
 x = np.dot(np.linalg.inv(phi), y.T)
 
-result,true_value = draw(x)
+result,true_value = calc(x)
 
-ax = plt.subplot()
-plt.plot(yy,'o', color='blue', label='noise data')
-plt.plot(result, color='blue', label='calculated value')
-plt.plot(true_value, color='red', linestyle='dashed', label='true value')
-plt.legend()
-
-#change the x-axis-label (not change the value itself) 
-ax.set_xticks(np.linspace(0, 100, 11))
-ax.set_xticklabels(['0','1','2','3','4','5','6','7','8','9','10'])
-
-ax.set_xlim(0.0, 100.0)
-ax.set_ylim(-2.0, 2.0)
-plt.title('Figure2-6 10dim')
-plt.show()
+print(y)
+drawing(yy, result, true_value, '10dim')
